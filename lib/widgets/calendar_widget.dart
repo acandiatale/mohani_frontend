@@ -3,9 +3,11 @@ import 'package:table_calendar/table_calendar.dart';
 
 class CalendarWidget extends StatefulWidget {
   final String language;
+  final List appointmentList;
   const CalendarWidget({
     super.key,
     required this.language,
+    required this.appointmentList,
   });
 
   @override

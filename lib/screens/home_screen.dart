@@ -13,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late SharedPreferences prefs;
   String language = "ko-KR";
+  late List appointmentList;
 
   Future getSettings() async {
     prefs = await SharedPreferences.getInstance();
@@ -29,6 +30,8 @@ class _HomeScreenState extends State<HomeScreen> {
       });
     }
   }
+
+  Future getMonthAppointment() async {}
 
   @override
   void initState() {
@@ -63,6 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             CalendarWidget(
               language: language,
+              appointmentList: appointmentList,
             ),
             const SizedBox(
               height: 20,
