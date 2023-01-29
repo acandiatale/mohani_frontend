@@ -13,7 +13,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late SharedPreferences prefs;
   String language = "ko-KR";
-  late List appointmentList;
 
   Future getSettings() async {
     prefs = await SharedPreferences.getInstance();
@@ -31,8 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  Future getMonthAppointment() async {}
-
   @override
   void initState() {
     super.initState();
@@ -43,8 +40,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 255, 199, 232),
-        foregroundColor: Theme.of(context).textTheme.headline1!.color,
+        // backgroundColor: const Color.fromARGB(255, 255, 199, 232),
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        foregroundColor: Theme.of(context).appBarTheme.foregroundColor,
         title: const Text(
           "MOHANI",
           style: TextStyle(fontWeight: FontWeight.w800),
@@ -62,35 +60,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Column(
-          children: [
-            CalendarWidget(
-              language: language,
-              appointmentList: appointmentList,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.amber.shade300,
-              ),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      children: const [
-                        Text("9:00"),
-                        Text("할 일"),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
+        child: CalendarWidget(
+          language: language,
         ),
       ),
     );

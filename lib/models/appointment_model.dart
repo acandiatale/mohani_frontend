@@ -1,8 +1,6 @@
-import 'dart:ffi';
-
 class AppointmentModel {
   final String groupId;
-  final Long appointmentId;
+  final int appointmentId;
   final String content;
   final DateTime pickedDateTime;
   final DateTime writedDateTime;
@@ -11,6 +9,6 @@ class AppointmentModel {
       : groupId = json['groupId'],
         appointmentId = json['appointmentId'],
         content = json['content'],
-        pickedDateTime = json['pickedDateTime'],
-        writedDateTime = json['writedDateTime'];
+        pickedDateTime = DateTime.parse(json['pickedDateTime']),
+        writedDateTime = DateTime.parse(json['writedTime']);
 }
